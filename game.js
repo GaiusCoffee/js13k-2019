@@ -1,0 +1,2 @@
+class g{constructor(){this.ui=new ui}}
+class ui{constructor(){this.d=document,this.l=this.d.querySelector`#logs`,this.b=this.d.querySelector`#buttons`}log(t){let e=this.d.createElement`p`;for(e.appendChild(this.d.createTextNode(`⚜️ ${t}`)),this.l.insertBefore(e,this.l.firstChild);this.l.children.length>12;)this.l.removeChild(this.l.lastChild)}}

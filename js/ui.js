@@ -13,4 +13,17 @@ class ui {
         }
         // window.scrollTo(0,0); // Do I need to?
     }
+    addB(v,cb) {
+        let n = this.d.createElement`button`;
+        n.appendChild(this.d.createTextNode(v));
+        n.onclick=cb;
+        this.b.insertBefore(n, this.b.firstChild);
+    }
+    remB(v) {
+        let n;
+        this.b.childNodes.forEach((c)=>{
+            if(c.textContent==v){n=c;}
+        });
+        this.b.removeChild(n);
+    }
 }

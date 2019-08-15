@@ -6,7 +6,7 @@ class ui {
     }
     log(m) {
         let p = this.d.createElement`p`;
-        p.appendChild(this.d.createTextNode(`⚜️ ${m}`));
+        p.insertAdjacentHTML('afterbegin',`⚜️ ${m}`);
         this.l.insertBefore(p, this.l.firstChild);
         while(this.l.children.length>12) {
             this.l.removeChild(this.l.lastChild);
@@ -24,6 +24,23 @@ class ui {
         this.b.childNodes.forEach((c)=>{
             if(c.textContent==v){n=c;}
         });
-        this.b.removeChild(n);
+        if(n){
+            this.b.removeChild(n);
+        }
+    }
+    tick(min,max,cb){
+        if(typeof min === "function") {
+            cb=min;min=0;max=0;
+        }
+        if(max==0){
+            if(min==0){ // default: 2000ms
+                setTimeout(cb, 2000);
+            } else { // if no max, call after min
+                setTimeout(cb,min);
+            }
+        } else { // random range between min & max
+            setTimeout(cb, (new Date()%(max-min)+min));
+        }
     }
 }
+window.ui=new ui();

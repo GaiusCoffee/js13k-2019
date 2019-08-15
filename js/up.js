@@ -1,7 +1,7 @@
-class hk {
+class s2 {
     go(){
         let u=window.ui;
 
     }
 }
-window.hk=new hk();
+window.s2=new s2();

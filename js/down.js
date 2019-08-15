@@ -1,6 +1,6 @@
 class s1 {
     go(){
-        this.ui=window.ui;
+        let u=window.ui;
 
     }
 }

@@ -35,8 +35,7 @@ class rb {
         u.addB('Check yourself.',()=>{
             u.remB('Check yourself.');
             u.log('You are wearing what you have always worn. Very faintly, you remember wearing the same clothes somewhere, sometime else.');
-            u.tick(()=>{u.log('You have nothing in your pockets.');});
-            // inventory.js?
+            u.tick(()=>{u.log(window.nv.l());}); // Get items from inventory.
         });
         setTimeout(()=>{u.remB('Check yourself.');},30000);
 

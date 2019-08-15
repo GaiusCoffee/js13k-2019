@@ -15,7 +15,8 @@ class tw {
     st(){
         let u=window.ui;
         let d1,d2;
-        if(window.direction>0){d1='up';d2='left';}else{d1='down';d2='right';}
+        if(window.direction>0){d1='up';d2='left';}
+        else{d1='down';d2='right';}
         u.tick(2,10,()=>{
             u.log(this.s[new Date()%this.s.length]);
             u.tick(()=>{
@@ -30,10 +31,25 @@ class tw {
             });
         });
     }
-    be(){   // Big Event
-        console.log('big event!');this.st();
+    be(){
+        let u=window.ui;
+        u.log('You reach the next platform and to your surprise, there\'s a closed door in one of the walls!');
+        u.addB('Open the door',()=>{
+            u.remB('Open the door');
+            let a=window.direction;
+            window.direction=0;
+            if(a>0){window.s2.go();}
+            else{window.s1.go();}
+        });
+        u.tick(15,0,()=>{
+            if(window.direction!==0){
+                u.remB('Open the door');
+                u.log('You ignore the door, and continue on your way.');
+                this.st();
+            }
+        });
     }
-    se(){   // Small Event
+    se(){
         console.log('small event!');this.st();
     }
 }

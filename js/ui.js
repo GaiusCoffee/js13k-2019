@@ -36,9 +36,10 @@ class ui {
             if(min==0){ // default: 2000ms
                 setTimeout(cb, 2000);
             } else { // if no max, call after min
-                setTimeout(cb,min);
+                setTimeout(cb,min*1000);
             }
         } else { // random range between min & max
+            min=min*1000;max=max*1000;
             setTimeout(cb, (new Date()%(max-min)+min));
         }
     }
